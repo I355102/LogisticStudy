@@ -1,0 +1,3 @@
+service {
+  "mock.mockdb::region_based_report" as "reports" keys generate local "ID";
+}

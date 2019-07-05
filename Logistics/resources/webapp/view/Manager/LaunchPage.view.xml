@@ -1,0 +1,40 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml"
+xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" 
+controllerName="CaseStudy.Logistics.controller.Manager.LaunchPage" 
+displayBlock="true">
+	<App id="idAppControl">
+		<pages>
+			<Page title="Manager"
+				  showNavButton="true"
+				  navButtonPress="onNavBack">
+				<content>
+					
+					<!-- Personal Info Tile -->
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Personal Info" 
+					subheader="Update your personal info" press="onPersonalInfoPress">
+					<TileContent>
+						<ImageContent src="sap-icon://employee-pane"/>
+					</TileContent>
+					</GenericTile>
+					
+					<!-- Leaves Tile -->
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Leaves"
+					subheader="Approve leaves" press="onLeavesPress">
+					<TileContent>
+						<NumericContent icon="sap-icon://approvals" id="numcontent1"  visible="{= ${Leave_Id} === 0}"/>
+					</TileContent>
+					</GenericTile>
+					
+					<!-- Reports Tile -->
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Reports" 
+					subheader="View Reports" press="onReportsPress">
+					<TileContent>
+						<ImageContent src="sap-icon://manager-insight"/>
+					</TileContent>
+					</GenericTile>
+					
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

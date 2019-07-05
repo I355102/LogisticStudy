@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="mock.mockdb::mock_clc_Ops" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="mock_clc_ops"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="mock.mockdb::mock_cds.OpsAgents">
+    <resourceUri>mock.mockdb::mock_cds.OpsAgents</resourceUri>
+  </DataSource>
+  <DataSource id="mock.mockdb::mock_cds.users">
+    <resourceUri>mock.mockdb::mock_cds.users</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="name">
+        <descriptions defaultDescription="name"/>
+      </viewAttribute>
+      <viewAttribute id="F_Ops_Id">
+        <descriptions defaultDescription="F_Ops_Id"/>
+      </viewAttribute>
+      <viewAttribute id="User_Id">
+        <descriptions defaultDescription="User_Id"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="mock.mockdb::mock_cds.OpsAgents">
+      <mapping xsi:type="Calculation:AttributeMapping" target="name" source="name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Ops_Id" source="F_Ops_Id"/>
+    </input>
+    <input node="mock.mockdb::mock_cds.users">
+      <mapping xsi:type="Calculation:AttributeMapping" target="User_Id" source="User_Id"/>
+    </input>
+    <filter>&quot;F_Ops_Id&quot; in (&quot;User_Id&quot;)</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="name" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="name"/>
+      <keyMapping columnObjectName="Join_1" columnName="name"/>
+    </attribute>
+    <attribute id="F_Ops_Id" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="F_Ops_Id"/>
+      <keyMapping columnObjectName="Join_1" columnName="F_Ops_Id"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="199"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="mock.mockdb::mock_cds.OpsAgents" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="mock.mockdb::mock_cds.users" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

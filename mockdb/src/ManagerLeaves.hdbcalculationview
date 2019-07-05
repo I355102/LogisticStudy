@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="mock.mockdb::ManagerLeaves" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="ManagerLeaves"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="mock.mockdb::mock_clc_delivery_agent">
+    <resourceUri>mock.mockdb::mock_clc_delivery_agent</resourceUri>
+  </DataSource>
+  <DataSource id="mock.mockdb::mock_clc_Leaves">
+    <resourceUri>mock.mockdb::mock_clc_Leaves</resourceUri>
+  </DataSource>
+  <DataSource id="mock.mockdb::mock_clc_Manager">
+    <resourceUri>mock.mockdb::mock_clc_Manager</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="F_Delivery_Id">
+        <descriptions defaultDescription="F_Delivery_Id"/>
+      </viewAttribute>
+      <viewAttribute id="name">
+        <descriptions defaultDescription="name"/>
+      </viewAttribute>
+      <viewAttribute id="F_Region_Id">
+        <descriptions defaultDescription="F_Region_Id"/>
+      </viewAttribute>
+      <viewAttribute id="F_Manager_Id">
+        <descriptions defaultDescription="F_Manager_Id"/>
+      </viewAttribute>
+      <viewAttribute id="F_Packet_Id">
+        <descriptions defaultDescription="F_Packet_Id"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="mock.mockdb::mock_clc_delivery_agent">
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Delivery_Id" source="F_Delivery_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="name" source="name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Region_Id" source="F_Region_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Manager_Id" source="F_Manager_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Packet_Id" source="F_Packet_Id"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="Leave_Id">
+        <descriptions defaultDescription="Leave_Id"/>
+      </viewAttribute>
+      <viewAttribute id="Leave_Status">
+        <descriptions defaultDescription="Leave_Status"/>
+      </viewAttribute>
+      <viewAttribute id="Leave_Comment">
+        <descriptions defaultDescription="Leave_Comment"/>
+      </viewAttribute>
+      <viewAttribute id="Start_Date">
+        <descriptions defaultDescription="Start_Date"/>
+      </viewAttribute>
+      <viewAttribute id="End_Date">
+        <descriptions defaultDescription="End_Date"/>
+      </viewAttribute>
+      <viewAttribute id="F_Delivery_Id">
+        <descriptions defaultDescription="F_Delivery_Id"/>
+      </viewAttribute>
+    
+      <viewAttribute id="Leave_Reason">
+        <descriptions defaultDescription="Leave_Reason"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="mock.mockdb::mock_clc_Leaves">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Leave_Id" source="Leave_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Leave_Status" source="Leave_Status"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Leave_Comment" source="Leave_Comment"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Start_Date" source="Start_Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="End_Date" source="End_Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Delivery_Id" source="F_Delivery_Id"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="Leave_Reason" source="Leave_Reason"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="F_Manager_Id">
+        <descriptions defaultDescription="F_Manager_Id"/>
+      </viewAttribute>
+      <viewAttribute id="F_Delivery_Id">
+        <descriptions defaultDescription="F_Delivery_Id"/>
+      </viewAttribute>
+      <viewAttribute id="Leave_Id">
+        <descriptions defaultDescription="Leave_Id"/>
+      </viewAttribute>
+      <viewAttribute id="F_Delivery_Id_1">
+        <descriptions defaultDescription="F_Delivery_Id"/>
+      </viewAttribute>
+    
+      <viewAttribute id="Leave_Reason">
+        <descriptions defaultDescription="Leave_Reason"/>
+      </viewAttribute>
+      <viewAttribute id="Start_Date">
+        <descriptions defaultDescription="Start_Date"/>
+      </viewAttribute>
+      <viewAttribute id="End_Date">
+        <descriptions defaultDescription="End_Date"/>
+      </viewAttribute>
+    
+      <viewAttribute id="Leave_Status">
+        <descriptions defaultDescription="Leave_Status"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Manager_Id" source="F_Manager_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Delivery_Id" source="F_Delivery_Id"/>
+    </input>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Leave_Id" source="Leave_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Delivery_Id_1" source="F_Delivery_Id"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="Leave_Reason" source="Leave_Reason"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Start_Date" source="Start_Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="End_Date" source="End_Date"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="Leave_Status" source="Leave_Status"/>
+    </input>
+    <filter>&quot;F_Delivery_Id&quot; = &quot;F_Delivery_Id_1&quot;</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_3">
+    <viewAttributes>
+      <viewAttribute id="F_Manager_Id">
+        <descriptions defaultDescription="F_Manager_Id"/>
+      </viewAttribute>
+      <viewAttribute id="F_Delivery_Id">
+        <descriptions defaultDescription="F_Delivery_Id"/>
+      </viewAttribute>
+      <viewAttribute id="Leave_Id">
+        <descriptions defaultDescription="Leave_Id"/>
+      </viewAttribute>
+      <viewAttribute id="Leave_Reason">
+        <descriptions defaultDescription="Leave_Reason"/>
+      </viewAttribute>
+      <viewAttribute id="Start_Date">
+        <descriptions defaultDescription="Start_Date"/>
+      </viewAttribute>
+      <viewAttribute id="End_Date">
+        <descriptions defaultDescription="End_Date"/>
+      </viewAttribute>
+    
+      <viewAttribute id="Leave_Status">
+        <descriptions defaultDescription="Leave_Status"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Join_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Manager_Id" source="F_Manager_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Delivery_Id" source="F_Delivery_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Leave_Id" source="Leave_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Leave_Reason" source="Leave_Reason"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Start_Date" source="Start_Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="End_Date" source="End_Date"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="Leave_Status" source="Leave_Status"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_4">
+    <viewAttributes>
+      <viewAttribute id="Name">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="F_Manager_Id">
+        <descriptions defaultDescription="F_Manager_Id"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="mock.mockdb::mock_clc_Manager">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Name" source="Name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Manager_Id" source="F_Manager_Id"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="F_Manager_Id">
+        <descriptions defaultDescription="F_Manager_Id"/>
+      </viewAttribute>
+      <viewAttribute id="F_Delivery_Id">
+        <descriptions defaultDescription="F_Delivery_Id"/>
+      </viewAttribute>
+      <viewAttribute id="Leave_Id">
+        <descriptions defaultDescription="Leave_Id"/>
+      </viewAttribute>
+      <viewAttribute id="Leave_Reason">
+        <descriptions defaultDescription="Leave_Reason"/>
+      </viewAttribute>
+      <viewAttribute id="Start_Date">
+        <descriptions defaultDescription="Start_Date"/>
+      </viewAttribute>
+      <viewAttribute id="End_Date">
+        <descriptions defaultDescription="End_Date"/>
+      </viewAttribute>
+      <viewAttribute id="Name">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="F_Manager_Id_1">
+        <descriptions defaultDescription="F_Manager_Id"/>
+      </viewAttribute>
+    
+      <viewAttribute id="Leave_Status">
+        <descriptions defaultDescription="Leave_Status"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Projection_3">
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Manager_Id" source="F_Manager_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Delivery_Id" source="F_Delivery_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Leave_Id" source="Leave_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Leave_Reason" source="Leave_Reason"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Start_Date" source="Start_Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="End_Date" source="End_Date"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="Leave_Status" source="Leave_Status"/>
+    </input>
+    <input node="Projection_4">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Name" source="Name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Manager_Id_1" source="F_Manager_Id"/>
+    </input>
+    <filter>&quot;F_Manager_Id&quot; = &quot;F_Manager_Id_1&quot;</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_2" filterExpressionLanguage="SQL">
+  <attributes>
+    <attribute id="F_Manager_Id" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="F_Manager_Id"/>
+      <keyMapping columnObjectName="Join_2" columnName="F_Manager_Id"/>
+    </attribute>
+    <attribute id="F_Delivery_Id" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="F_Delivery_Id"/>
+      <keyMapping columnObjectName="Join_2" columnName="F_Delivery_Id"/>
+    </attribute>
+    <attribute id="Leave_Id" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Leave_Id"/>
+      <keyMapping columnObjectName="Join_2" columnName="Leave_Id"/>
+    </attribute>
+    <attribute id="Leave_Reason" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Leave_Reason"/>
+      <keyMapping columnObjectName="Join_2" columnName="Leave_Reason"/>
+    </attribute>
+    <attribute id="Start_Date" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Start_Date"/>
+      <keyMapping columnObjectName="Join_2" columnName="Start_Date"/>
+    </attribute>
+    <attribute id="End_Date" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="End_Date"/>
+      <keyMapping columnObjectName="Join_2" columnName="End_Date"/>
+    </attribute>
+    <attribute id="Name" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Name"/>
+      <keyMapping columnObjectName="Join_2" columnName="Name"/>
+    </attribute>
+  
+    <attribute id="Leave_Status" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Leave_Status"/>
+  
+      <keyMapping columnObjectName="Join_2" columnName="Leave_Status"/>
+  
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/></logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="100" y="105"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-227" y="553"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="57" y="548"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-88" y="427"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_3" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-88" y="348"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_4" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="110" y="348"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="10" y="239"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_3" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_4" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

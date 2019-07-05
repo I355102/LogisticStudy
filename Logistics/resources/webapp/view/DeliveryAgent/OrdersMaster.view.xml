@@ -1,0 +1,28 @@
+<mvc:View
+	controllerName="CaseStudy.Logistics.controller.DeliveryAgent.OrdersMaster"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page title="My Orders"
+			showNavButton="true"
+		navButtonPress="onNavBack">
+	<List
+		items="{orders>/orders}"
+		headerText="Orders">
+		<items>
+			<ObjectListItem
+				title="Order {orders>Order_Id}"
+				type="Active"
+				press="onOrderItemPress">
+			<firstStatus>
+					<ObjectStatus
+						text="In Time"
+						state="Success" />
+				</firstStatus>
+				<attributes>
+					<ObjectAttribute text="{orders>Supplier_Name}" />
+				</attributes>
+			</ObjectListItem>
+		</items>
+	</List>
+	</Page>
+</mvc:View>

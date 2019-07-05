@@ -1,0 +1,115 @@
+
+
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.f.semantic" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" controllerName="CaseStudy.Logistics.controller.Manager.Detail">
+
+	<semantic:SemanticPage id="detailPage" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:titleHeading>
+			<Title text="LEAVE REQUEST"/>
+		</semantic:titleHeading>
+		<semantic:content>
+			
+			
+				<Panel>
+					
+						<VBox class="sapUiSmallMargin">
+		<f:Form id="FormDisplayColumn_oneGroup"
+			editable="false">
+			<f:title>
+				<core:Title text="LEAVE DETAILS" />
+			</f:title>
+			<f:layout>
+				<f:ColumnLayout />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement label="DELIVERYAGENTID">
+							<f:fields>
+								<Text text="1234" id="ID"  />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="DELIVERYAGENTNAME">
+							<f:fields>
+								<Text text="SUSHMITHA" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="STARTDATE">
+							<f:fields>
+								<Text text="12/08/2018" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="ENDDATE">
+							<f:fields>
+								<Text text="13/09/2018" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="MESSAGE">
+							<f:fields>
+								<Text text="SICK" />
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</VBox>
+				<headerToolbar>
+					
+					
+		<!--<f:SimpleForm id="SimpleFormChange354wideDual" editable="true" layout="ResponsiveGridLayout" title="Address" labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false">
+			<f:content>
+				<core:Title text="AgentDetails"/>
+				<Label text="DeliveryAgentId"/>
+				<Input id="Id" value="234"/>
+				<Label text="DeliveryAgentName"/>
+				<Input value="Sushmitha">
+				</Input>
+				
+				<Label text="AreaAssigned"/>
+				<Input value="bellandur">
+					<layoutData>
+						<l:GridData span="XL2 L1 M3 S4"/>
+					</layoutData>
+				</Input>
+			
+				<core:Title text="LeaveDetails"/>
+				<Label text="StartDate"/>
+				<Input value="12/04/2018"/>
+				<Label text="EndDate"/>
+				<Input value="13/06/2018"/>
+				<Label text="Message"/>
+				<Input value="sick"/>
+				
+			</f:content>
+		</f:SimpleForm> -->
+						 
+						
+					
+				</headerToolbar>
+				<FlexBox height="30px" alignItems="Center" justifyContent="Center">
+					<items>
+						<Button text="Accept" press="onaccept" type="Accept" activeIcon="sap-icon://accept" icon="sap-icon://accept"/>
+						<Button text="Reject" press="onreject" type="Reject" activeIcon="sap-icon://decline" icon="sap-icon://decline"/>
+					</items>
+				</FlexBox>
+
+			</Panel>
+		</semantic:content>
+		<!--Semantic ShareMenu Buttons-->
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onSendEmailPress"/>
+		</semantic:sendEmailAction>
+
+		<semantic:closeAction>
+			<semantic:CloseAction id="closeColumn" press="onCloseDetailPress"/>
+		</semantic:closeAction>
+
+		<semantic:fullScreenAction>
+			<semantic:FullScreenAction id="enterFullScreen" visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+		</semantic:fullScreenAction>
+		<semantic:exitFullScreenAction>
+			<semantic:ExitFullScreenAction id="exitFullScreen" visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+		</semantic:exitFullScreenAction>
+
+	</semantic:SemanticPage>
+</mvc:View>

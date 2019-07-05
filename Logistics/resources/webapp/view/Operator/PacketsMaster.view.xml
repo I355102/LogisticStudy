@@ -1,0 +1,26 @@
+<mvc:View
+	controllerName="CaseStudy.Logistics.controller.Operator.PacketsMaster"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page
+	showNavButton="true"
+		navButtonPress="onNavBack">
+	<List
+	    width="200%"
+	    
+		items="{
+			path: 'packets>/packets',
+			sorter: {
+				path: 'packets>Packet_id'
+			}
+		}">
+		<items>
+			<StandardListItem
+				title="Packet {packets>Packet_id}"
+				type="Navigation"
+				press="onShowDetail"
+				 />
+		</items>
+	</List>
+	</Page>
+</mvc:View>

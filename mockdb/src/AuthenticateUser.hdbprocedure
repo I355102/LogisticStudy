@@ -1,0 +1,19 @@
+PROCEDURE "mock.mockdb::AuthenticateUser" ( IN i_id NVARCHAR(10),IN i_pwd NVARCHAR(10), OUT i_role NVARCHAR(1),OUT  error_flag NVARCHAR(10))
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   declare noc nvarchar(10);
+   declare num integer;
+   select count(*) into num from "mock.mockdb::mock_cds.users" where "User_Id" = i_id and "Password" = i_pwd;
+   if(num>0) then
+                             select "Role" into i_role from "mock.mockdb::mock_cds.users" where "User_Id" = i_id and "Password" = i_pwd; 
+                             error_flag := 'No error';
+              else
+                             error_flag := 'Error';
+              end if;
+END

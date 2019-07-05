@@ -1,0 +1,129 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:t="sap.ui.table"
+	controllerName="CaseStudy.Logistics.controller.Manager.PersonalInfo">
+	<Page title="My Details"
+				  showNavButton="true"
+				  navButtonPress="onNavBack">
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormDisplay480_Trial"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Address"
+			labelSpanXL="4"
+			labelSpanL="4"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="0"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="3"
+			columnsL="2"
+			columnsM="2"
+			singleContainerFullSize="false" >
+			<f:content>
+				
+				<core:Title text="My Details" />
+				<Label text="Name" />
+				<Text text="{Personalinfo>/Salutation} {Personalinfo>/First_Name} {Personalinfo>/LastName}" />
+				<Label text="Address" />
+				<Text text="{Personalinfo>/Address}" />
+				<Label text="Birth date" />
+				<Text text="{Personalinfo>/BirthDate}" />
+				
+				<core:Title text="Office" />
+				<Label text="E-mail ID" />
+				<Text text="{Personalinfo>/EmailID}" />
+				<Label text="Contact Details" />
+				<Text text="{Personalinfo>/Phone_Number}" />
+				<Label text="Designation" />
+				<Text text="{Personalinfo>/Role}" />
+			</f:content>
+		</f:SimpleForm>
+		
+	<!--	<md:content>
+			<t:Table
+				id="agents_table"
+				rows="{agents>/agents}"
+				ariaLabelledBy="title"
+				selectionMode="None">
+				<t:toolbar>
+					<md:Toolbar>
+						<md:Title id="title" text="My Delivery Agents"></md:Title>
+					</md:Toolbar>
+				</t:toolbar>
+				<t:columns>
+					
+					<t:Column>
+						<md:Label text="Agent ID" />
+						<t:template>
+							<md:Text text="{agents>F_Delivery_Id}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<md:Label text="Name" />
+						<t:template>
+							<md:Text text="{agents>name}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<md:Label text="Region ID" />
+						<t:template>
+							<md:Text text="{agents>F_Region_Id}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+					
+					
+					
+				</t:columns>
+			</t:Table>
+		</md:content> -->
+		</VBox>
+		<Table id="idProductsTable"
+		inset="false"
+		items="{path:'agentsu>/agents'}"
+		>
+		<headerToolbar>
+			<Toolbar>
+				<content>
+					<Title text="Deliver Agents Info" level="H2"/>
+					<ToolbarSpacer />
+				</content>
+			</Toolbar>
+		</headerToolbar>
+		
+		<columns>
+			<Column
+				width="12em">
+				<Text text="Agent_Id" />
+			</Column>
+			<Column
+				width="12em">
+				<Text text="Name" />
+			</Column>
+			<Column
+				width="12em">
+				<Text text="Region" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<ObjectIdentifier
+						text="{agentsu>F_Delivery_Id}"/>
+					<Text
+						text="{agentsu>name}" />
+					<Text
+						text="{agentsu>F_Region_Id}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+		</Page>
+</mvc:View>

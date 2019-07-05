@@ -1,0 +1,307 @@
+{
+	"_version": "1.9.0",
+	"sap.app": {
+		"id": "${project.artifactId}",
+		"type": "application",
+		"resources": "resources.json",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "${project.version}"
+		},
+		"ach": "set-ach",
+		"sourceTemplate": {
+			"id": "sap.ui.ui5-template-plugin.2masterdetail",
+			"version": "1.56.1"
+		}
+	},
+	"sap.fiori": {
+		"registrationIds": [],
+		"archeType": "transactional"
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "CaseStudy.Logistics.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "${sap.ui5.dist.version}",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.f": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "CaseStudy.Logistics.i18n.i18n"
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.f.routing.Router",
+				"viewType": "XML",
+				"viewPath": "CaseStudy.Logistics.view",
+				"controlId": "layout",
+				"controlAggregation": "beginColumnPages",
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "login",
+					"target": "login"
+				},
+				{
+					"pattern": "DeliveryAgent",
+					"name": "deliveryagent",
+					"target": [
+						"deliveryagent"
+						]
+				},
+					{
+					"pattern": "DeliveryAgent/PersonalInfo",
+					"name": "deliveryagent_personalinfo",
+					"target": [
+						"deliveryagent_personalinfo"
+						]
+				},
+				{
+					"pattern": "DeliveryAgent/Leaves",
+					"name": "deliveryagent_leaves",
+					"target": [
+						"deliveryagent_leaves"
+						]
+				},
+				{
+					"pattern": "DeliveryAgent/Orders",
+					"name": "deliveryagent_orders_master",
+					"target": [
+						"deliveryagent_orders_master"
+						]
+				},
+				{
+					"pattern": "DeliveryAgent/Orders/{Order_Id}",
+					"name": "deliveryagent_orders_detail",
+					"target": [
+						"deliveryagent_orders_detail"
+					]
+				},
+				{
+					"pattern": "Manager",
+					"name": "manager",
+					"target": [
+						"manager"
+						]
+				},
+				{
+					"pattern": "Manager/Leaves",
+					"name": "manager_leaves",
+					"target": [
+						"manager_leaves"
+						]
+				},
+				{
+					"pattern": "Manager/PersonalInfo",
+					"name": "manager_personalinfo",
+					"target": [
+						"manager_personalinfo"
+						]
+				},
+				{
+					"pattern": "Manager/leaves/{Leave_Id}",
+					"name": "managerobject",
+					"target": [
+						"managermaster",
+						"managerobject"
+					]
+				},
+				{
+					"pattern": "Manager/Reports",
+					"name": "manager_reports",
+					"target": [
+						"manager_reports"
+						]
+				},
+				{
+					"pattern": "Operator",
+					"name": "operator",
+					"target": [
+						"operator"
+						]
+				},
+				{
+					"pattern": "Operator/PersonalInfo",
+					"name": "operator_personalinfo",
+					"target": [
+						"operator_personalinfo"
+						]
+				},
+					{
+					"pattern": "Operator/Regions",
+					"name": "operator_regions",
+					"target": [
+						"operator_regions"
+						]
+				},
+				{
+					"pattern": "Operator/Region/{R_Id}",
+					"name": "operator_packets_master",
+					"target": [
+						"operator_packets_master"
+						]
+				},
+				{
+					"pattern": "Operator/Region/{R_Id}/Packet/{Packet_id}",
+					"name": "operator_packets_detail",
+					"target": [
+						"operator_packets_detail"
+						]
+				},
+						{
+					"pattern": "Operator/DisplayAssigned",
+					"name": "operator_display",
+					"target": [
+						"operator_display"
+						]
+				},
+				{
+					"pattern": "OperatorObjectAssign/packet/{Packet_id}",
+					"name": "operatorobjectAssign",
+					"target": [
+						"operatormaster",
+						"operatorobjectAssign"
+						]
+				}
+				
+			],
+			"targets": {
+				"login": {
+					"viewName": "Login",
+					"viewLevel": 1,
+					"viewId": "login"
+				},
+				"deliveryagent": {
+					"viewName": "DeliveryAgent/LaunchPage",
+					"viewLevel": 2,
+					"viewId": "deliveryagent_launch"
+				},
+				"deliveryagent_personalinfo": {
+					"viewName": "DeliveryAgent/PersonalInfo",
+					"viewLevel": 3,
+					"viewId": "deliveryagent_personalinfo"
+				},
+				"deliveryagent_leaves": {
+					"viewName": "DeliveryAgent/DeliveryAgentLeaves",
+					"viewLevel": 3,
+					"viewId": "deliveryagent_leaves"
+				},
+				"deliveryagent_orders_master": {
+					"viewName": "DeliveryAgent/OrdersMaster",
+					"viewLevel": 3,
+					"viewId": "deliveryagent_orders_master"
+				},
+				"deliveryagent_orders_detail": {
+					"viewName": "DeliveryAgent/OrdersDetail",
+					"viewLevel": 4,
+					"viewId": "deliveryagent_orders_detail",
+					"controlAggregation": "midColumnPages"
+				},
+				"deliveryagentobject": {
+					"viewName": "DeliveryAgent/Detail",
+					"viewId": "deliveryagent_detail",
+					"viewLevel": 2,
+					"controlAggregation": "midColumnPages"
+				},
+				"manager": {
+					"viewName": "Manager/LaunchPage",
+					"viewLevel": 2,
+					"viewId": "manager_launch"
+				},
+				"manager_leaves": {
+					"viewName": "Manager/ManagerLeaves",
+					"viewLevel": 3,
+					"viewId": "manager_leaves"
+				},
+				"manager_personalinfo": {
+					"viewName": "Manager/PersonalInfo",
+					"viewLevel": 3,
+					"viewId": "manager_personalinfo"
+				},
+				"manager_reports": {
+					"viewName": "Manager/Reports",
+					"viewLevel": 3,
+					"viewId": "manager_reports"
+				},
+				"managerobject": {
+					"viewName": "Manager/Detail",
+					"viewId": "manager_detail",
+					"viewLevel": 2,
+					"controlAggregation": "midColumnPages"
+				},
+				"operator": {
+					"viewName": "Operator/LaunchPage",
+					"viewLevel": 2,
+					"viewId": "operator_first"
+				},
+				"operator_personalinfo": {
+					"viewName": "Operator/PersonalInfo",
+					"viewLevel": 3,
+					"viewId": "operator_personalinfo"
+				},
+					"operator_regions": {
+					"viewName": "Operator/Regions",
+					"viewLevel": 3,
+					"viewId": "operator_regions"
+				},
+					"operator_packets_master": {
+					"viewName": "Operator/PacketsMaster",
+					"viewLevel": 4,
+					"viewId": "operator_packets_master"
+				},
+					"operator_packets_detail": {
+					"viewName": "Operator/PacketsDetail",
+					"viewLevel": 5,
+					"viewId": "operator_packets_detail",
+					"controlAggregation": "midColumnPages"
+				},
+					"operator_display": {
+					"viewName": "Operator/DisplayAssigned",
+					"viewLevel": 3,
+					"viewId": "operator_display"
+				},
+				"operatorobjectAssign": {
+					"viewName": "Operator/DetailAssign",
+					"viewID": "operator_detail_assign",
+					"viewLevel": 3
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,83 @@
+<mvc:View
+	controllerName="CaseStudy.Logistics.controller.Manager.ManagerLeaves"
+	xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+	height="100%">
+	<m:Page
+		title="Leaves Pending"
+		enableScrolling="true"
+		class="sapUiContentPadding"
+		showNavButton="true"
+		navButtonPress="onNavBack">
+		<m:content>
+			<Table
+				id="leaves_table"
+				rows="{leaves>/leaves}"
+				ariaLabelledBy="title"
+				selectionMode="None"
+			   	wrapping="false"
+				fixedlayout="false"
+				>
+				<toolbar>
+					<m:Toolbar>
+						<m:Title id="title" text="Leaves"></m:Title>
+					</m:Toolbar>
+				</toolbar>
+				<columns>
+					<Column hAlign="Center">
+						<template>
+							<RowAction>
+								<items>
+									<RowActionItem 
+										text="Accept"
+										icon="sap-icon://accept"
+										press="onAccept"/>
+									<RowActionItem 
+										text="Reject"
+										icon="sap-icon://decline"
+										press="onReject"/>
+								</items>
+							</RowAction>
+						</template>
+					</Column>
+					
+					<Column>
+						<m:Label text="Leave ID" />
+						<template>
+							<m:Text text="{leaves>Leave_Id}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column>
+						<m:Label text="Agent Name" />
+						<template>
+							<m:Text text="{leaves>Name}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column>
+						<m:Label text="Start Date" />
+						<template>
+							<m:Text text="{leaves>Start_Date}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column>
+						<m:Label text="End Date" />
+						<template>
+							<m:Text text="{leaves>End_Date}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column>
+						<m:Label text="Leave Reason" />
+						<template>
+							<m:Text text="{leaves>Leave_Reason}" wrapping="false"/>
+						</template>
+					</Column>
+					
+					
+				</columns>
+			</Table>
+		</m:content>
+	</m:Page>
+</mvc:View>

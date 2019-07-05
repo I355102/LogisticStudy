@@ -1,0 +1,75 @@
+<mvc:View 
+	xmlns="sap.m" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:semantic="sap.f.semantic" 
+	controllerName="CaseStudy.Logistics.controller.Operator.PacketsDetail">
+	<semantic:SemanticPage id="detailPage" busy="{appView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:titleHeading>
+			<Title text="Packets P002" id="Packet_Id"/>
+		</semantic:titleHeading>
+		<semantic:content>
+			<IconTabBar>
+				<items>
+					<!-- assign delivery agent -->
+					<IconTabFilter text="Agent" icon="sap-icon://supplier"> 
+					<List
+					id="agent_list"
+					noDataText="All agents have been assigned"
+					headerText="Assign Agents"
+					mode="SingleSelectLeft"
+					items="{
+						path: 'agents>/agents',
+						sorter: {
+							path: 'agents>name'
+						}
+					}">
+					<items>
+						<StandardListItem
+							title="{agents>name}"
+							 />
+					</items>
+					</List>
+					<Button 
+					id="assign_button"
+					press="onAssignPress" 
+					icon="sap-icon://employee-approvals"/>
+					</IconTabFilter>
+					
+					<IconTabSeparator/>
+					
+					<!--view line items -->
+					<IconTabFilter text="Line Items" icon="sap-icon://activity-items">
+					<List
+					headerText="Orders"
+					items="{
+						path: 'orders>/orders',
+						sorter: {
+							path: 'orders>Order_Id'
+						}
+					}">
+					<items>
+						<StandardListItem
+							title="Order {orders>Order_Id}"/>
+					</items>
+					</List>
+				
+					</IconTabFilter>	
+					</items>
+					
+			</IconTabBar> 
+		</semantic:content>
+		<!--Semantic ShareMenu Buttons-->
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onSendEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:closeAction>
+			<semantic:CloseAction id="closeColumn" press="onCloseDetailPress"/>
+		</semantic:closeAction>
+		<semantic:fullScreenAction>
+			<semantic:FullScreenAction id="enterFullScreen" visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+		</semantic:fullScreenAction>
+		<semantic:exitFullScreenAction>
+			<semantic:ExitFullScreenAction id="exitFullScreen" visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+		</semantic:exitFullScreenAction>
+	</semantic:SemanticPage>
+</mvc:View>

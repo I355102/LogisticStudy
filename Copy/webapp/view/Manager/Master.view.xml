@@ -1,0 +1,67 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:c="sap.suite.ui.microchart" xmlns:layout="sap.ui.layout"
+	controllerName="CaseStudy.Logistics.controller.Manager.Master" xmlns="sap.m" xmlns:semantic="sap.f.semantic">
+	<IconTabBar id="idIconTabBarMulti" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter icon="sap-icon://create-leave-request" text="Leaves">
+				<semantic:SemanticPage id="masterPage" preserveHeaderStateOnScroll="true" toggleHeaderOnTitleClick="false">
+					<semantic:titleHeading>
+						<Title id="masterPageTitle" text="{masterView>/title}"/>
+					</semantic:titleHeading>
+					<semantic:content>
+						<!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->
+						<List id="list" width="auto" class="sapFDynamicPageAlignContent"
+							items="{ path: '/Products', sorter: { path: 'Name', descending: false }, groupHeaderFactory: '.createGroupHeader' }"
+							busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}"
+							mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true"
+							updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
+							<infoToolbar>
+								<Toolbar active="true" id="filterBar" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
+									<Title id="filterBarLabel" text="{masterView>/filterBarLabel}"/>
+								</Toolbar>
+							</infoToolbar>
+							<headerToolbar>
+								<OverflowToolbar>
+									<SearchField id="searchField" showRefreshButton="true" tooltip="{i18n>masterSearchTooltip}" search="onSearch" width="auto">
+										<layoutData>
+											<OverflowToolbarLayoutData minWidth="150px" maxWidth="240px" shrinkable="true" priority="NeverOverflow"/>
+										</layoutData>
+									</SearchField>
+									<ToolbarSpacer/>
+									<Button id="sortButton" press="onOpenViewSettings" icon="sap-icon://sort" type="Transparent"/>
+									<Button id="filterButton" press="onOpenViewSettings" icon="sap-icon://filter" type="Transparent"/>
+									<Button id="groupButton" press="onOpenViewSettings" icon="sap-icon://group-2" type="Transparent"/>
+								</OverflowToolbar>
+							</headerToolbar>
+							<items>
+								<ObjectListItem type="Navigation" press="onSelectionChange" title="{Name}" number="{ path: 'Price', formatter: '.formatter.currencyValue' }"
+									numberUnit="{CurrencyCode}"></ObjectListItem>
+							</items>
+						</List>
+					</semantic:content>
+				</semantic:SemanticPage>
+			</IconTabFilter>
+			<IconTabFilter icon="sap-icon://expense-report" text="Reports">
+				<Text text="Reports go here ..."/>
+				<layout:Grid defaultSpan="XL6 L6 M6 S12">
+					<!-- Example with absolute and percentage values -->
+					<Text text="Absolute and Percentage values" class="sapUiSmallMargin">
+						<layoutData>
+							<layout:GridData span="XL12 L12 M12 S12"/>
+						</layoutData>
+					</Text>
+					<FlexBox width="20rem" height="10rem" alignItems="Center" class="sapUiSmallMargin">
+						<items>
+							<c:InteractiveBarChart labelWidth="25%" selectionChanged="selectionChanged" press="press">
+								<c:bars>
+									<c:InteractiveBarChartBar label="Product 1" value="10"/>
+									<c:InteractiveBarChartBar label="Product 2" value="20"/>
+									<c:InteractiveBarChartBar label="Product 3" value="70"/>
+								</c:bars>
+							</c:InteractiveBarChart>
+						</items>
+					</FlexBox>
+				</layout:Grid>
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
+</mvc:View>

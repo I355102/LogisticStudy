@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	controllerName="CaseStudy.Operator.controller.Detail"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+	<ResponsivePopover
+		title="{Name}"
+		class="sapUiPopupWithPadding"
+		placement="Bottom" >
+		<beginButton>
+			<Button text="Assign" press="handleAssignButton" />
+		</beginButton>
+		<endButton>
+			<Button text="Cancel" press="handleCloseButton" />
+		</endButton>
+		<content>
+			
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

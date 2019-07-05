@@ -1,0 +1,58 @@
+# git
+.gitreview
+
+# Java Class
+*.class
+
+# Maven
+target/
+
+# Ignore temp folders
+grunt/bin
+
+# Ignore npm files/folders
+node
+node_modules
+npm-debug.log
+dist
+
+# Ignore bower folder
+bower_components
+
+# Ignore junit reports
+bin/
+
+# Package Files
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+*.tar.bz2
+*.jar
+*.war
+*.ear
+
+# Log, Backup, Executable Files
+Thumbs.db
+.DS_Store
+*.exe
+*.dll
+*.bak
+*.orig
+*.log
+*.un~
+
+.settings/
+.classpath
+
+# Regi
+._SYS_REGI_settings/
+.backup
+.HanaStudioSystemProject
+.metadata
+
+**/__empty__/*
+
+#IDE
+.idea/

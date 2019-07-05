@@ -1,0 +1,3 @@
+service {
+  "mock.mockdb::PacketOrder" as "packetorder" keys generate local "ID";
+}

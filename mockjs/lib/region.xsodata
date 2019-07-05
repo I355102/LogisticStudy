@@ -1,0 +1,3 @@
+service {
+  "mock.mockdb::Region" as "region" keys generate local "ID";
+}

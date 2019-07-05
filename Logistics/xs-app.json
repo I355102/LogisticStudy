@@ -1,0 +1,11 @@
+{
+	"welcomeFile": "webapp/index.html",
+	"authenticationMethod": "none",
+	"routes": [{
+         "source": ".*\\.xsodata/.*$",
+         "destination": "mockjs_be"
+     }, {
+         "source": ".*\\.xsjs",
+         "destination": "mockjs_be"
+     }]
+}

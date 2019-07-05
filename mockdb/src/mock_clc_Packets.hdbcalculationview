@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="mock.mockdb::mock_clc_Packets" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="mock_clc_Packets"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="mock.mockdb::mock_cds.Packets">
+    <resourceUri>mock.mockdb::mock_cds.Packets</resourceUri>
+  </DataSource>
+  <DataSource id="mock.mockdb::mock_cds.Region">
+    <resourceUri>mock.mockdb::mock_cds.Region</resourceUri>
+  </DataSource>
+  <DataSource id="mock.mockdb::mock_clc_delivery_agent">
+    <resourceUri>mock.mockdb::mock_clc_delivery_agent</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="Packet_id">
+        <descriptions defaultDescription="Packet_id"/>
+      </viewAttribute>
+      <viewAttribute id="Date_Delivery">
+        <descriptions defaultDescription="Date_Delivery"/>
+      </viewAttribute>
+      <viewAttribute id="Packet_Status">
+        <descriptions defaultDescription="Packet_Status"/>
+      </viewAttribute>
+      <viewAttribute id="F_Region_id">
+        <descriptions defaultDescription="F_Region_id"/>
+      </viewAttribute>
+      <viewAttribute id="R_Id">
+        <descriptions defaultDescription="R_Id"/>
+      </viewAttribute>
+    
+      <viewAttribute id="F_Delivery_Id">
+        <descriptions defaultDescription="F_Delivery_Id"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="mock.mockdb::mock_cds.Packets">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Packet_id" source="Packet_id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Date_Delivery" source="Date_Delivery"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Packet_Status" source="Packet_Status"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Region_id" source="F_Region_id"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Delivery_Id" source="F_Delivery_Id"/>
+    </input>
+    <input node="mock.mockdb::mock_cds.Region">
+      <mapping xsi:type="Calculation:AttributeMapping" target="R_Id" source="R_Id"/>
+    </input>
+    <filter>&quot;F_Region_id&quot; in (&quot;R_Id&quot;)</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="Packet_id">
+        <descriptions defaultDescription="Packet_id"/>
+      </viewAttribute>
+      <viewAttribute id="Date_Delivery">
+        <descriptions defaultDescription="Date_Delivery"/>
+      </viewAttribute>
+      <viewAttribute id="Packet_Status">
+        <descriptions defaultDescription="Packet_Status"/>
+      </viewAttribute>
+      <viewAttribute id="F_Region_id">
+        <descriptions defaultDescription="F_Region_id"/>
+      </viewAttribute>
+      <viewAttribute id="R_Id">
+        <descriptions defaultDescription="R_Id"/>
+      </viewAttribute>
+      <viewAttribute id="F_Delivery_Id">
+        <descriptions defaultDescription="F_Delivery_Id"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Join_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Packet_id" source="Packet_id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Date_Delivery" source="Date_Delivery"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Packet_Status" source="Packet_Status"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Region_id" source="F_Region_id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="R_Id" source="R_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Delivery_Id" source="F_Delivery_Id"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="F_Delivery_Id">
+        <descriptions defaultDescription="F_Delivery_Id"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="mock.mockdb::mock_clc_delivery_agent">
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Delivery_Id" source="F_Delivery_Id"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="Packet_id">
+        <descriptions defaultDescription="Packet_id"/>
+      </viewAttribute>
+      <viewAttribute id="Date_Delivery">
+        <descriptions defaultDescription="Date_Delivery"/>
+      </viewAttribute>
+      <viewAttribute id="Packet_Status">
+        <descriptions defaultDescription="Packet_Status"/>
+      </viewAttribute>
+      <viewAttribute id="F_Region_id">
+        <descriptions defaultDescription="F_Region_id"/>
+      </viewAttribute>
+      <viewAttribute id="R_Id">
+        <descriptions defaultDescription="R_Id"/>
+      </viewAttribute>
+      <viewAttribute id="F_Delivery_Id">
+        <descriptions defaultDescription="F_Delivery_Id"/>
+      </viewAttribute>
+      <viewAttribute id="F_Delivery_Id_1">
+        <descriptions defaultDescription="F_Delivery_Id"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Packet_id" source="Packet_id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Date_Delivery" source="Date_Delivery"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Packet_Status" source="Packet_Status"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Region_id" source="F_Region_id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="R_Id" source="R_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Delivery_Id" source="F_Delivery_Id"/>
+    </input>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Delivery_Id_1" source="F_Delivery_Id"/>
+    </input>
+    <filter>&quot;F_Delivery_Id&quot; in (&quot;F_Delivery_Id_1&quot;)</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_2">
+  <attributes>
+    <attribute id="Packet_id" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Packet_id"/>
+      <keyMapping columnObjectName="Join_2" columnName="Packet_id"/>
+    </attribute>
+    <attribute id="Date_Delivery" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Date_Delivery"/>
+      <keyMapping columnObjectName="Join_2" columnName="Date_Delivery"/>
+    </attribute>
+    <attribute id="Packet_Status" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Packet_Status"/>
+      <keyMapping columnObjectName="Join_2" columnName="Packet_Status"/>
+    </attribute>
+    <attribute id="F_Region_id" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="F_Region_id"/>
+      <keyMapping columnObjectName="Join_2" columnName="F_Region_id"/>
+    </attribute>
+    <attribute id="R_Id" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="R_Id"/>
+      <keyMapping columnObjectName="Join_2" columnName="R_Id"/>
+    </attribute>
+    <attribute id="F_Delivery_Id" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="F_Delivery_Id"/>
+      <keyMapping columnObjectName="Join_2" columnName="F_Delivery_Id"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="30" y="365"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="mock.mockdb::mock_cds.Packets" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="mock.mockdb::mock_cds.Region" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="30" y="275"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="251" y="275"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="125" y="187"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,43 @@
+<mvc:View
+	controllerName="CaseStudy.Logistics.controller.Manager.Reports"
+	xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+	height="100%">
+	<m:Page
+		title="Reports"
+		enableScrolling="true"
+		class="sapUiContentPadding"
+		showNavButton="true"
+		navButtonPress="onNavBack">
+		<m:content>
+			<Table
+				id="reports_table"
+				rows="{reports>/reports}"
+				ariaLabelledBy="title"
+				selectionMode="None">
+				<toolbar>
+					<m:Toolbar>
+						<m:Title id="title" text="Reports"></m:Title>
+					</m:Toolbar>
+				</toolbar>
+				<columns>
+					<Column>
+						<m:Label text="Region Name" />
+						<template>
+							<m:Text text="{reports>Region_name}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column>
+						<m:Label text="Total Number of Orders" />
+						<template>
+							<m:Text text="{reports>Total_Orders}" wrapping="false"/>
+						</template>
+					</Column>
+				</columns>
+			</Table>
+		</m:content>
+	</m:Page>
+</mvc:View>

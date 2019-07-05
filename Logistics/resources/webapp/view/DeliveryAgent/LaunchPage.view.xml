@@ -1,0 +1,40 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml"
+xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" 
+controllerName="CaseStudy.Logistics.controller.DeliveryAgent.LaunchPage" 
+displayBlock="true">
+	<App id="idAppControl">
+		<pages>
+			<Page title="Delivery Agent"
+			showNavButton="true"
+		navButtonPress="onNavBack">
+				<content>
+					
+					<!-- Personal Info Tile -->
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Personal Info" 
+					subheader="Update your info" press="onPersonalInfoPress">
+					<TileContent>
+						<ImageContent src="sap-icon://employee-pane"/>
+					</TileContent>
+					</GenericTile>
+					
+					<!-- Leaves Tile -->
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Leaves"
+					subheader="Apply for leaves" press="onLeavesPress">
+					<TileContent>
+						<NumericContent id="numcontent2" icon="sap-icon://create-leave-request" />
+					</TileContent>
+					</GenericTile>
+					
+					<!-- Orders Tile -->
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Orders" 
+					subheader="View Orders" press="onOrdersPress">
+					<TileContent>
+						<ImageContent src="sap-icon://customer-order-entry"/>
+					</TileContent>
+					</GenericTile>
+					
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

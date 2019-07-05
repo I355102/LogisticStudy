@@ -1,0 +1,26 @@
+<mvc:View
+	controllerName="CaseStudy.Logistics.controller.Operator.Regions"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page
+	id="page_regions"
+	showNavButton="true"
+		navButtonPress="onNavBack">
+	<List
+		headerText="Regions"
+		items="{
+			path: 'regions>/regions',
+			sorter: {
+				path: 'regions>Region_name'
+			}
+		}">
+		<items>
+			<StandardListItem
+				title="{regions>Region_name}"
+				type="Navigation"
+				press="onRegionPress"
+				 />
+		</items>
+	</List>
+	</Page>
+</mvc:View>

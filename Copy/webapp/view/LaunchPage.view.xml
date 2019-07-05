@@ -1,0 +1,35 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="CaseStudy.Logistics.controller.LaunchPage" displayBlock="true">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					
+					<!-- Operator Tile -->
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Operator" 
+					subheader="Map packets to Agents" press="Operatorpress">
+					<TileContent>
+						<ImageContent src="sap-icon://activity-assigned-to-goal"/>
+					</TileContent>
+					</GenericTile>
+					
+					<!-- Manager Tile -->
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Manager"
+					subheader="View Reports" press="Managerpress">
+					<TileContent>
+					<ImageContent src="sap-icon://manager-insight"/>
+					</TileContent>
+					</GenericTile>
+					
+					<!-- Delivery Agent Tile -->
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Delivery Agent" 
+					subheader="View Orders" press="DeliveryAgentpress">
+					<TileContent>
+					<ImageContent src="sap-icon://shipping-status"/>
+					</TileContent>
+					</GenericTile>
+					
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

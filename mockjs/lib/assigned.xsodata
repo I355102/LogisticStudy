@@ -1,0 +1,3 @@
+service {
+  "mock.mockdb::Assigned" as "assigned" keys generate local "ID";
+}

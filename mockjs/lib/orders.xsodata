@@ -1,0 +1,3 @@
+service {
+  "mock.mockdb::Orders" as "orders" keys generate local "ID";
+}

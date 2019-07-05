@@ -1,0 +1,3 @@
+service {
+  "mock.mockdb::Agents" as "agents" keys generate local "ID";
+}

@@ -1,0 +1,12 @@
+PROCEDURE "mock.mockdb::RequestLeave" (IN Leave_Reason nvarchar(100),IN Start_Date nvarchar(100),IN End_Date nvarchar(100),IN F_Delivery_Id nvarchar(100))
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   insert into "mock.mockdb::mock_cds.Leaves"("Leave_Status","Leave_Comment","Leave_Reason","Start_Date","End_Date","F_Delivery_Id") values('P',' ',Leave_Reason,Start_Date,End_Date,F_Delivery_Id);
+   
+END

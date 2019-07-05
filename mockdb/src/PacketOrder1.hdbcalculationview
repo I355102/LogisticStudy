@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="mock.mockdb::PacketOrder1" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="PacketOrder1"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="mock.mockdb::mock_clc_Packets">
+    <resourceUri>mock.mockdb::mock_clc_Packets</resourceUri>
+  </DataSource>
+  <DataSource id="mock.mockdb::mock_clc_Orders">
+    <resourceUri>mock.mockdb::mock_clc_Orders</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="Packet_id">
+        <descriptions defaultDescription="Packet_id"/>
+      </viewAttribute>
+      <viewAttribute id="Date_Delivery">
+        <descriptions defaultDescription="Date_Delivery"/>
+      </viewAttribute>
+      <viewAttribute id="Packet_Status">
+        <descriptions defaultDescription="Packet_Status"/>
+      </viewAttribute>
+      <viewAttribute id="F_Region_id">
+        <descriptions defaultDescription="F_Region_id"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="mock.mockdb::mock_clc_Packets">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Packet_id" source="Packet_id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Date_Delivery" source="Date_Delivery"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Packet_Status" source="Packet_Status"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Region_id" source="F_Region_id"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="Order_Id">
+        <descriptions defaultDescription="Order_Id"/>
+      </viewAttribute>
+      <viewAttribute id="Order_Status">
+        <descriptions defaultDescription="Order_Status"/>
+      </viewAttribute>
+      <viewAttribute id="F_Packet_Id">
+        <descriptions defaultDescription="F_Packet_Id"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="mock.mockdb::mock_clc_Orders">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Order_Id" source="Order_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Order_Status" source="Order_Status"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Packet_Id" source="F_Packet_Id"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="Packet_id">
+        <descriptions defaultDescription="Packet_id"/>
+      </viewAttribute>
+      <viewAttribute id="Date_Delivery">
+        <descriptions defaultDescription="Date_Delivery"/>
+      </viewAttribute>
+      <viewAttribute id="Packet_Status">
+        <descriptions defaultDescription="Packet_Status"/>
+      </viewAttribute>
+      <viewAttribute id="F_Region_id">
+        <descriptions defaultDescription="F_Region_id"/>
+      </viewAttribute>
+      <viewAttribute id="Order_Id">
+        <descriptions defaultDescription="Order_Id"/>
+      </viewAttribute>
+      <viewAttribute id="Order_Status">
+        <descriptions defaultDescription="Order_Status"/>
+      </viewAttribute>
+      <viewAttribute id="F_Packet_Id">
+        <descriptions defaultDescription="F_Packet_Id"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Packet_id" source="Packet_id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Date_Delivery" source="Date_Delivery"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Packet_Status" source="Packet_Status"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Region_id" source="F_Region_id"/>
+    </input>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Order_Id" source="Order_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Order_Status" source="Order_Status"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Packet_Id" source="F_Packet_Id"/>
+    </input>
+    <filter>&quot;Packet_id&quot;=&quot;F_Packet_Id&quot;</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="Packet_id" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Packet_id"/>
+      <keyMapping columnObjectName="Join_1" columnName="Packet_id"/>
+    </attribute>
+    <attribute id="Date_Delivery" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Date_Delivery"/>
+      <keyMapping columnObjectName="Join_1" columnName="Date_Delivery"/>
+    </attribute>
+    <attribute id="Order_Status" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Order_Status"/>
+      <keyMapping columnObjectName="Join_1" columnName="Order_Status"/>
+    </attribute>
+    <attribute id="Order_Id" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Order_Id"/>
+      <keyMapping columnObjectName="Join_1" columnName="Order_Id"/>
+    </attribute>
+    <attribute id="F_Packet_Id" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="F_Packet_Id"/>
+      <keyMapping columnObjectName="Join_1" columnName="F_Packet_Id"/>
+    </attribute>
+    <attribute id="F_Region_id" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="F_Region_id"/>
+      <keyMapping columnObjectName="Join_1" columnName="F_Region_id"/>
+    </attribute>
+    <attribute id="Packet_Status" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Packet_Status"/>
+      <keyMapping columnObjectName="Join_1" columnName="Packet_Status"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-119" y="300"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="160" y="300"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="15" y="194"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="24" y="33"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

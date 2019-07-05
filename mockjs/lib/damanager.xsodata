@@ -1,0 +1,3 @@
+service {
+  "mock.mockdb::damanagerview" as "damanager" keys generate local "ID";
+}

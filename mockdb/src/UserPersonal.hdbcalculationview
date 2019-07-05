@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="mock.mockdb::UserPersonal" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="UserPersonal"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="mock.mockdb::mock_cds.users">
+    <resourceUri>mock.mockdb::mock_cds.users</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="User_Id">
+        <descriptions defaultDescription="User_Id"/>
+      </viewAttribute>
+      <viewAttribute id="Password">
+        <descriptions defaultDescription="Password"/>
+      </viewAttribute>
+      <viewAttribute id="Role">
+        <descriptions defaultDescription="Role"/>
+      </viewAttribute>
+      <viewAttribute id="BirthDate">
+        <descriptions defaultDescription="BirthDate"/>
+      </viewAttribute>
+      <viewAttribute id="MaritalStatus">
+        <descriptions defaultDescription="MaritalStatus"/>
+      </viewAttribute>
+      <viewAttribute id="EmailID">
+        <descriptions defaultDescription="EmailID"/>
+      </viewAttribute>
+      <viewAttribute id="Phone_Number">
+        <descriptions defaultDescription="Phone_Number"/>
+      </viewAttribute>
+      <viewAttribute id="Address">
+        <descriptions defaultDescription="Address"/>
+      </viewAttribute>
+      <viewAttribute id="Salutation">
+        <descriptions defaultDescription="Salutation"/>
+      </viewAttribute>
+      <viewAttribute id="First_Name">
+        <descriptions defaultDescription="First_Name"/>
+      </viewAttribute>
+      <viewAttribute id="LastName">
+        <descriptions defaultDescription="LastName"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="mock.mockdb::mock_cds.users">
+      <mapping xsi:type="Calculation:AttributeMapping" target="User_Id" source="User_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Password" source="Password"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Role" source="Role"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BirthDate" source="BirthDate"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaritalStatus" source="MaritalStatus"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EmailID" source="EmailID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Phone_Number" source="Phone_Number"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Address" source="Address"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Salutation" source="Salutation"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="First_Name" source="First_Name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LastName" source="LastName"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="User_Id" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="User_Id"/>
+      <keyMapping columnObjectName="Projection_1" columnName="User_Id"/>
+    </attribute>
+    <attribute id="Password" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Password"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Password"/>
+    </attribute>
+    <attribute id="Role" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Role"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Role"/>
+    </attribute>
+    <attribute id="BirthDate" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BirthDate"/>
+      <keyMapping columnObjectName="Projection_1" columnName="BirthDate"/>
+    </attribute>
+    <attribute id="MaritalStatus" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MaritalStatus"/>
+      <keyMapping columnObjectName="Projection_1" columnName="MaritalStatus"/>
+    </attribute>
+    <attribute id="EmailID" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EmailID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EmailID"/>
+    </attribute>
+    <attribute id="Phone_Number" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Phone_Number"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Phone_Number"/>
+    </attribute>
+    <attribute id="Address" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Address"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Address"/>
+    </attribute>
+    <attribute id="Salutation" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Salutation"/>
+      <keyMapping columnObjectName="Projection_1" columnName="Salutation"/>
+    </attribute>
+    <attribute id="First_Name" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="First_Name"/>
+      <keyMapping columnObjectName="Projection_1" columnName="First_Name"/>
+    </attribute>
+    <attribute id="LastName" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LastName"/>
+      <keyMapping columnObjectName="Projection_1" columnName="LastName"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="189"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

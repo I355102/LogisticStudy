@@ -1,0 +1,48 @@
+<mvc:View xmlns:core="sap.ui.core" 
+			xmlns:mvc="sap.ui.core.mvc" 
+			xmlns:l="sap.ui.layout"
+			xmlns:f="sap.ui.layout.form"
+			xmlns="sap.m" 
+			controllerName="CaseStudy.Logistics.controller.Login"
+			xmlns:html="http://www.w3.org/1999/xhtml">
+	
+	
+	<VBox alignItems="Center">
+		<f:SimpleForm id="LoginForm"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="Login" >
+			<f:content>
+				
+				<!-- UserName -->
+				<Label text="UserName" />
+				<Input id="username">
+					<layoutData>
+						<f:ColumnElementData cellsSmall="2" cellsLarge="7" />
+					</layoutData>
+				</Input>
+				
+				<!-- Password -->
+				<Label text="Password" />
+				<Input id="password"
+						type="Password">
+					<layoutData>
+						<f:ColumnElementData cellsSmall="2" cellsLarge="7" />
+					</layoutData>
+				</Input>
+				
+				<!-- Login Button -->
+				<Label />
+				<Label />
+				<Button text="Login"
+						press="onLoginPress">
+					<layoutData>
+						<f:ColumnElementData cellsSmall="2" cellsLarge="7" />
+					</layoutData>
+				</Button>
+				
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+	
+</mvc:View>

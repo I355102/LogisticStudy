@@ -1,0 +1,12 @@
+PROCEDURE "mock.mockdb::ResponseLeave" (IN Leave_Id integer,IN Leave_Comment nvarchar(100),IN Leave_Status nvarchar(100))
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   update "mock.mockdb::mock_cds.Leaves" set "Leave_Comment" = Leave_Comment,"Leave_Status" = Leave_Status where "Leave_Id" = Leave_Id;
+   
+END

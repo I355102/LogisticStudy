@@ -1,0 +1,181 @@
+{
+	"_version": "1.9.0",
+	"sap.app": {
+		"id": "${project.artifactId}",
+		"type": "application",
+		"resources": "resources.json",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "${project.version}"
+		},
+		"ach": "set-ach",
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/EPM_REF_APPS_PROD_MAN_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "sap.ui.ui5-template-plugin.2masterdetail",
+			"version": "1.56.1"
+		}
+	},
+	"sap.fiori": {
+		"registrationIds": [],
+		"archeType": "transactional"
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "CaseStudy.Logistics.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "${sap.ui5.dist.version}",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.f": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "CaseStudy.Logistics.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.f.routing.Router",
+				"viewType": "XML",
+				"viewPath": "CaseStudy.Logistics.view",
+				"controlId": "layout",
+				"controlAggregation": "beginColumnPages",
+				"bypassed": {
+					"target": "notFound"
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "launch",
+					"target": "launch"
+				},
+				{
+					"pattern": "DeliveryAgent",
+					"name": "deliveryagent",
+					"target": [
+						"deliveryagentmaster"
+						]
+				},
+				{
+					"pattern": "DeliveryAgent/Products/{objectId}",
+					"name": "deliveryagentobject",
+					"target": [
+						"deliveryagentmaster",
+						"deliveryagentobject"
+					]
+				},
+				{
+					"pattern": "Manager",
+					"name": "manager",
+					"target": [
+						"managermaster"
+						]
+				},
+				{
+					"pattern": "Manager/Products/{objectId}",
+					"name": "managerobject",
+					"target": [
+						"managermaster",
+						"managerobject"
+					]
+				},
+				{
+					"pattern": "Operator",
+					"name": "operator",
+					"target": [
+						"operatorfirst"
+						]
+				}
+			],
+			"targets": {
+				"launch": {
+					"viewName": "LaunchPage",
+					"viewLevel": 1,
+					"viewId": "launch"
+				},
+				"deliveryagentmaster": {
+					"viewName": "DeliveryAgent/Master",
+					"viewLevel": 2,
+					"viewId": "deliveryagent_master"
+				},
+				"deliveryagentobject": {
+					"viewName": "DeliveryAgent/Detail",
+					"viewId": "deliveryagent_detail",
+					"viewLevel": 2,
+					"controlAggregation": "midColumnPages"
+				},
+				"managermaster": {
+					"viewName": "Manager/Master",
+					"viewLevel": 2,
+					"viewId": "manager_master"
+				},
+				"managerobject": {
+					"viewName": "Manager/Detail",
+					"viewId": "manager_detail",
+					"viewLevel": 2,
+					"controlAggregation": "midColumnPages"
+				},
+				"operatorfirst": {
+					"viewName": "Operator/First",
+					"viewLevel": 2,
+					"viewId": "operator_first"
+				},
+				"detailObjectNotFound": {
+					"viewName": "DetailObjectNotFound",
+					"viewId": "detailObjectNotFound",
+					"controlAggregation": "midColumnPages"
+				},
+				"notFound": {
+					"viewName": "NotFound",
+					"viewId": "notFound"
+				}
+			}
+		}
+	}
+}

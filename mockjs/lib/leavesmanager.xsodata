@@ -1,0 +1,3 @@
+service {
+  "mock.mockdb::LeavesManager" as "leavesmanager" keys generate local "ID";
+}

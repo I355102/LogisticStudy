@@ -1,0 +1,11 @@
+PROCEDURE "mock.mockdb::DeliverStatus" (IN Order_Id nvarchar(10), IN Order_Status nvarchar(100) )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   update "mock.mockdb::mock_cds.Orders" set "Order_Status" = Order_Status where "Order_Id"= Order_Id;
+END

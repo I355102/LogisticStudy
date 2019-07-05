@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="mock.mockdb::mock_clc_Manager" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="mock_clc_Manager"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="mock.mockdb::mock_cds.Manager">
+    <resourceUri>mock.mockdb::mock_cds.Manager</resourceUri>
+  </DataSource>
+  <DataSource id="mock.mockdb::mock_cds.users">
+    <resourceUri>mock.mockdb::mock_cds.users</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="Name">
+        <descriptions defaultDescription="Name"/>
+      </viewAttribute>
+      <viewAttribute id="F_Manager_Id">
+        <descriptions defaultDescription="F_Manager_Id"/>
+      </viewAttribute>
+      <viewAttribute id="User_Id">
+        <descriptions defaultDescription="User_Id"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="mock.mockdb::mock_cds.Manager">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Name" source="Name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Manager_Id" source="F_Manager_Id"/>
+    </input>
+    <input node="mock.mockdb::mock_cds.users">
+      <mapping xsi:type="Calculation:AttributeMapping" target="User_Id" source="User_Id"/>
+    </input>
+    <filter>&quot;F_Manager_Id&quot; in (&quot;User_Id&quot;)</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="Name" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Name"/>
+      <keyMapping columnObjectName="Join_1" columnName="Name"/>
+    </attribute>
+    <attribute id="F_Manager_Id" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="F_Manager_Id"/>
+      <keyMapping columnObjectName="Join_1" columnName="F_Manager_Id"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="106" y="222"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="mock.mockdb::mock_cds.Manager" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="mock.mockdb::mock_cds.users" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,50 @@
+<mvc:View
+	controllerName="CaseStudy.Logistics.controller.Operator.DisplayAssigned"
+	xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+	height="100%">
+	<m:Page
+		showNavButton="true"
+		navButtonPress="onNavBack"
+		enableScrolling="true"
+		class="sapUiContentPadding">
+		<m:content>
+			<Table
+				id="assigned_packets_table"
+				rows="{assignedModel>/assign}"
+				ariaLabelledBy="title"
+				selectionMode="None">
+				<toolbar>
+					<m:Toolbar>
+						<m:Title id="title" text="Packets Info"></m:Title>
+					</m:Toolbar>
+				</toolbar>
+				<columns>
+					<Column>
+						<m:Label text="Region Name" />
+						<template>
+							<m:Text text="{assignedModel>Region_name}" wrapping="false"/>
+						</template>
+					</Column>
+					
+					<Column>
+						<m:Label text="Packet ID" />
+						<template>
+							<m:Text text="{assignedModel>Packet_id}" wrapping="false"/>
+						</template>
+					</Column>
+					
+					<Column>
+						<m:Label text="Agent Assigned" />
+						<template>
+							<m:Text text="{assignedModel>name}" wrapping="false"/>
+						</template>
+					</Column>
+				</columns>
+			</Table>
+		</m:content>
+	</m:Page>
+</mvc:View>

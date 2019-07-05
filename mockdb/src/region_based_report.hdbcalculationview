@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="mock.mockdb::region_based_report" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="region_based_report"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="mock.mockdb::Region">
+    <resourceUri>mock.mockdb::Region</resourceUri>
+  </DataSource>
+  <DataSource id="mock.mockdb::PacketOrder">
+    <resourceUri>mock.mockdb::PacketOrder</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="R_Id">
+        <descriptions defaultDescription="R_Id"/>
+      </viewAttribute>
+      <viewAttribute id="Region_name">
+        <descriptions defaultDescription="Region_name"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="mock.mockdb::Region">
+      <mapping xsi:type="Calculation:AttributeMapping" target="R_Id" source="R_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Region_name" source="Region_name"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="Packet_id">
+        <descriptions defaultDescription="Packet_id"/>
+      </viewAttribute>
+      <viewAttribute id="Date_Delivery">
+        <descriptions defaultDescription="Date_Delivery"/>
+      </viewAttribute>
+      <viewAttribute id="Packet_Status">
+        <descriptions defaultDescription="Packet_Status"/>
+      </viewAttribute>
+      <viewAttribute id="Order_Id">
+        <descriptions defaultDescription="Order_Id"/>
+      </viewAttribute>
+      <viewAttribute id="F_Packet_Id">
+        <descriptions defaultDescription="F_Packet_Id"/>
+      </viewAttribute>
+      <viewAttribute id="Order_Status">
+        <descriptions defaultDescription="Order_Status"/>
+      </viewAttribute>
+      <viewAttribute id="F_Region_id">
+        <descriptions defaultDescription="F_Region_id"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="mock.mockdb::PacketOrder">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Packet_id" source="Packet_id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Date_Delivery" source="Date_Delivery"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Packet_Status" source="Packet_Status"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Order_Id" source="Order_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Packet_Id" source="F_Packet_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Order_Status" source="Order_Status"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Region_id" source="F_Region_id"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="Region_name">
+        <descriptions defaultDescription="Region_name"/>
+      </viewAttribute>
+      <viewAttribute id="Order_Id">
+        <descriptions defaultDescription="Order_Id"/>
+      </viewAttribute>
+      <viewAttribute hidden="true" id="JOIN$R_Id$F_Region_id"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Region_name" source="Region_name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$R_Id$F_Region_id" source="R_Id"/>
+    </input>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Order_Id" source="Order_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$R_Id$F_Region_id" source="F_Region_id"/>
+    </input>
+    <joinAttribute name="JOIN$R_Id$F_Region_id"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1" filterExpressionLanguage="SQL">
+  <attributes>
+    <attribute id="Region_name" order="1" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Region_name"/>
+      <keyMapping columnObjectName="Join_1" columnName="Region_name"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures>
+    <measure id="Total_Orders" hidden="false" order="2" aggregationType="sum" measureType="simple" calculatedMeasureType="counter" aggregatable="true" datatype="INTEGER">
+      <descriptions defaultDescription="Total_Orders"/>
+      <exceptionAggregation>
+        <attribute attributeName="Region_name"/>
+      </exceptionAggregation>
+      <formula>1</formula>
+      </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-91" y="315"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="284" y="305"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="195"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

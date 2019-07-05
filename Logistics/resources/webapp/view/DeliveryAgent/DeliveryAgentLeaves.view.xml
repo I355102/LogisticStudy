@@ -1,0 +1,71 @@
+<mvc:View
+	controllerName="CaseStudy.Logistics.controller.DeliveryAgent.DeliveryAgentLeaves"
+	xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified"
+	xmlns:c="sap.ui.core"
+	xmlns:m="sap.m"
+	height="100%">
+	<m:Page
+		showNavButton="true"
+		navButtonPress="onNavBack"
+		enableScrolling="true"
+		class="sapUiContentPadding">
+		<m:content>
+			<!-- Button to create new leave request -->
+			<m:Button text="Create Leave Request"
+				press="onNewLeavePress"
+				icon="sap-icon://add"
+				ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+			</m:Button>
+			<Table
+				id="leaves_table"
+				rows="{leaves>/leaves}"
+				ariaLabelledBy="title"
+				selectionMode="None"
+				wrapping="false"
+				fixedlayout="false">
+				<toolbar>
+					<m:Toolbar>
+						<m:Title id="title" text="My Leaves" ></m:Title>
+					</m:Toolbar>
+				</toolbar>
+				<columns>
+					
+					<Column>
+						<m:Label text="Leave ID" />
+						<template>
+							<m:Text text="{leaves>Leave_Id}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column>
+						<m:Label text="Status" />
+						<template>
+							<m:Text text="{leaves>Leave_Status}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column>
+						<m:Label text="Start Date" />
+						<template>
+							<m:Text text="{leaves>Start_Date}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column>
+						<m:Label text="End Date" />
+						<template>
+							<m:Text text="{leaves>End_Date}" wrapping="false"/>
+						</template>
+					</Column>
+					<Column>
+						<m:Label text="Leave Reason" />
+						<template>
+							<m:Text text="{leaves>Leave_Reason}" wrapping="false"/>
+						</template>
+					</Column>
+					
+					
+				</columns>
+			</Table>
+		</m:content>
+	</m:Page>
+</mvc:View>

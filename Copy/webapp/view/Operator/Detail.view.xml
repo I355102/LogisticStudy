@@ -1,0 +1,91 @@
+<mvc:View xmlns="sap.m" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:semantic="sap.f.semantic" 
+	controllerName="CaseStudy.Logistics.controller.Operator.Detail">
+	<semantic:SemanticPage id="detailPage" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:titleHeading>
+			<Title text="{Name}"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<!--	<ObjectAttribute title="{i18n>priceTitle}"/>
+				<ObjectNumber
+				id="objectHeaderNumber"
+				number="{
+					path: 'Price',
+					formatter: '.formatter.currencyValue'
+				}"
+				numberUnit="{CurrencyCode}"
+			/> -->
+		</semantic:headerContent>
+		<semantic:content>
+			<IconTabBar>
+				<items>
+					<IconTabFilter text="Items" icon="sap-icon://activity-items">
+						<!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->
+						<List id="list" width="auto" class="sapFDynamicPageAlignContent" items="{ path: '/Products', sorter: { path: 'Name', descending: false }, groupHeaderFactory: '.createGroupHeader' }" busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
+							<infoToolbar>
+								<Toolbar active="true" id="filterBar" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings" busyIndicatorSize="Large" height="60px">
+									<Title id="filterBarLabel" text="Order ID"/>
+								</Toolbar>
+							</infoToolbar>
+							<headerToolbar>
+								<OverflowToolbar busyIndicatorSize="Small" height="0.2px">
+								<!--	<SearchField id="searchField" showRefreshButton="true" tooltip="{i18n>masterSearchTooltip}" search="onSearch" width="auto">
+										<layoutData>
+											<OverflowToolbarLayoutData minWidth="150px" maxWidth="240px" shrinkable="true" priority="NeverOverflow"/>
+										</layoutData>
+									</SearchField>
+									<ToolbarSpacer/>
+									<Button id="sortButton" press="onOpenViewSettings" icon="sap-icon://sort" type="Transparent"/>
+									<Button id="filterButton" press="onOpenViewSettings" icon="sap-icon://filter" type="Transparent"/> -->
+								</OverflowToolbar>
+							</headerToolbar>
+							<items>
+								<ObjectListItem title="{Name}"/>
+							</items>
+						</List>
+					</IconTabFilter>
+					<IconTabSeparator/>
+					
+					
+					
+					
+					<IconTabFilter text="Agents" icon="sap-icon://person-placeholder">
+						<Button text="Click to assign selected agent"/>
+						<!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->
+						<List id="list1" width="auto" class="sapFDynamicPageAlignContent" items="{ path: '/Products', sorter: { path: 'Name', descending: false }, groupHeaderFactory: '.createGroupHeader' }" busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}" mode="SingleSelectLeft" press="handleResponsivePopoverPress" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
+							
+							<infoToolbar>
+								<Toolbar active="true" id="filterBar1" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings" height="60px">
+									<Title id="filterBarLabe1l" text="Agent Name" busyIndicatorSize="Large"/>
+								</Toolbar>
+							</infoToolbar>
+						  <items>
+								<ObjectListItem title="{Name}">
+									
+								</ObjectListItem>
+								
+						  </items> 
+						
+						</List>	
+					
+					</IconTabFilter>	
+				</items>
+					
+			</IconTabBar>
+		</semantic:content>
+		<!--Semantic ShareMenu Buttons-->
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onSendEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:closeAction>
+			<semantic:CloseAction id="closeColumn" press="onCloseDetailPress"/>
+		</semantic:closeAction>
+		<semantic:fullScreenAction>
+			<semantic:FullScreenAction id="enterFullScreen" visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+		</semantic:fullScreenAction>
+		<semantic:exitFullScreenAction>
+			<semantic:ExitFullScreenAction id="exitFullScreen" visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+		</semantic:exitFullScreenAction>
+	</semantic:SemanticPage>
+</mvc:View>

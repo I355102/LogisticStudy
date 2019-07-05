@@ -1,0 +1,79 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+xmlns="sap.m"
+xmlns:semantic="sap.f.semantic" 
+controllerName="CaseStudy.Logistics.Operator.controller.Master">
+	
+	<semantic:SemanticPage id="masterPage" preserveHeaderStateOnScroll="true" toggleHeaderOnTitleClick="false">
+		<semantic:titleHeading>
+			<Title id="masterPageTitle" text="{masterView>/title}"/> 
+			<Button text="Select Region" press="GoBack"></Button>
+		</semantic:titleHeading>
+		<semantic:content>
+			
+			<IconTabBar id="idIconTabBarFiori2" upperCase="true" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+				<items>
+					
+					<IconTabFilter text="Not Assigned" count="3" icon="sap-icon://sys-cancel">
+						
+								<!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->
+								<List id="list" width="auto" class="sapFDynamicPageAlignContent" items="{           path: '/Products',           sorter: {            path: 'Name',            descending: false           },           groupHeaderFactory: '.createGroupHeader'          }" busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}" mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
+									<infoToolbar>
+										<Toolbar active="true" id="filterBar" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
+											<Title id="filterBarLabel" text="{masterView>/filterBarLabel}"/>
+										</Toolbar>
+									</infoToolbar>
+									<headerToolbar>
+										<OverflowToolbar>
+											<SearchField id="searchField" showRefreshButton="true" tooltip="{i18n>masterSearchTooltip}" search="onSearch" width="auto">
+												<layoutData>
+													<OverflowToolbarLayoutData minWidth="150px" maxWidth="240px" shrinkable="true" priority="NeverOverflow"/>
+												</layoutData>
+											</SearchField>
+											<ToolbarSpacer/>
+											<Button id="sortButton" press="onOpenViewSettings" icon="sap-icon://sort" type="Transparent"/>
+											<Button id="filterButton" press="onOpenViewSettings" icon="sap-icon://filter" type="Transparent"/>
+											<Button id="groupButton" press="onOpenViewSettings" icon="sap-icon://group-2" type="Transparent"/>
+										</OverflowToolbar>
+									</headerToolbar>
+									<items>
+										<ObjectListItem type="Navigation" press="onSelectionChange" title="{Name}" number="{             path: 'Price',             formatter: '.formatter.currencyValue'            }" numberUnit="{CurrencyCode}">
+										</ObjectListItem>
+									</items>
+								</List>
+							</IconTabFilter>
+			
+							<IconTabFilter text="Assigned" count="3" icon="sap-icon://accept">
+								<List id="list1" width="auto" class="sapFDynamicPageAlignContent" items="{           path: '/Products',           sorter: {            path: 'Name',            descending: false           },           groupHeaderFactory: '.createGroupHeader'          }" busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}" mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished" selectionChange="onSelectionChangeAssign">
+									<infoToolbar>
+										<Toolbar active="true" id="filterBar1" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings">
+											<Title id="filterBarLabel1" text="{masterView>/filterBarLabel}"/>
+										</Toolbar>
+									</infoToolbar>
+									<headerToolbar>
+										<OverflowToolbar>
+											<SearchField id="searchField1" showRefreshButton="true" tooltip="{i18n>masterSearchTooltip}" search="onSearch" width="auto">
+												<layoutData>
+													<OverflowToolbarLayoutData minWidth="150px" maxWidth="240px" shrinkable="true" priority="NeverOverflow"/>
+												</layoutData>
+											</SearchField>
+											<ToolbarSpacer/>
+											<Button id="sortButton1" press="onOpenViewSettings" icon="sap-icon://sort" type="Transparent"/>
+											<Button id="filterButton1" press="onOpenViewSettings" icon="sap-icon://filter" type="Transparent"/>
+											<Button id="groupButton1" press="onOpenViewSettings" icon="sap-icon://group-2" type="Transparent"/>
+										</OverflowToolbar>
+									</headerToolbar>
+									<items>
+										<ObjectListItem type="Navigation" press="onSelectionChangeAssign" title="{Name}" number="{             path: 'Price',             formatter: '.formatter.currencyValue'            }" numberUnit="{CurrencyCode}">
+										</ObjectListItem>
+									</items>
+								</List>
+							</IconTabFilter>
+							
+							
+									</items>
+							
+							</IconTabBar>
+							</semantic:content>
+						</semantic:SemanticPage> 
+
+</mvc:View>

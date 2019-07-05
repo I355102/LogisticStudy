@@ -1,0 +1,33 @@
+PROCEDURE "mock.mockdb::Redistribute" (IN P_Id nvarchar(100),IN Date_Delivery nvarchar(100),IN Region_Id nvarchar(10) , OUT update_val integer)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+   CURSOR cur_new FOR select "Packet_id"
+		from "mock.mockdb::mock_clc_Packets" where "Date_Delivery"= Date_Delivery and "Packet_id"!=P_Id and "F_Region_id"=Region_Id;
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   declare count_order integer;
+   declare num_packets integer;
+   declare update_count integer;
+   update_count = 0;
+   update "mock.mockdb::mock_cds.Packets" set "Packet_Status"='R' where "Packet_id"= P_Id;
+   
+   select count(*) into count_order from "mock.mockdb::mock_clc_Orders" where "F_Packet_Id" = P_Id;
+   
+   select count(*) into num_packets from "mock.mockdb::mock_clc_Packets" where "Date_Delivery"= Date_Delivery and "F_Region_id" = Region_Id;
+   
+   update_count = count_order/num_packets;
+   update_count = CAST (update_count AS INTEGER);
+   update_val = update_count;
+   FOR cur_group_row as cur_new DO
+		   update top :update_count "mock.mockdb::mock_cds.Orders" set "F_Packet_Id"=cur_group_row."Packet_id" where "F_Packet_Id" = P_Id;
+   END FOR;
+   FOR cur_group_row as cur_new DO
+		   update  "mock.mockdb::mock_cds.Orders" set "F_Packet_Id"=cur_group_row."Packet_id" where "F_Packet_Id" = P_Id;
+   END FOR;
+   update "mock.mockdb::mock_cds.Packets" set "Packet_Status"='R' where "Packet_id" = P_Id;
+   
+END

@@ -1,0 +1,12 @@
+PROCEDURE "mock.mockdb::AssignPacket" (IN Packet_id nvarchar(100), IN F_Delivery_Id nvarchar(100))
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   update "mock.mockdb::mock_cds.Packets" set "F_Delivery_Id" = F_Delivery_Id ,"Packet_Status"='A' where "Packet_id" = Packet_id;
+   update "mock.mockdb::mock_cds.DeliveryAgents" set "flagval"='A' where "F_Delivery_Id"=F_Delivery_Id;
+END

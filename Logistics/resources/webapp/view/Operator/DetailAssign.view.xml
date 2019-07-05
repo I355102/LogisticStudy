@@ -1,0 +1,95 @@
+<mvc:View xmlns="sap.m" 
+xmlns:mvc="sap.ui.core.mvc" 
+xmlns:semantic="sap.f.semantic"
+controllerName="CaseStudy.Logistics.controller.Operator.DetailAssign" 	
+xmlns:l="sap.ui.layout"
+xmlns:f="sap.ui.layout.form"
+xmlns:core="sap.ui.core">
+	
+<semantic:SemanticPage id="detailPage" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}"
+showNavButton="true"
+		navButtonPress="onNavBack">
+	<semantic:titleHeading>
+		<Title text="Assigned Packets"/>
+	</semantic:titleHeading>
+	<semantic:headerContent>
+     <f:Form id="FormDisplay354" editable="false">
+   <!--    <f:title>
+        <core:Title text="OrderDetails" />
+       </f:title> -->
+       <f:layout>
+          <f:ResponsiveGridLayout
+                        labelSpanXL="2"
+                        labelSpanL="1"
+                        labelSpanM="1"
+                        labelSpanS="2"
+                        adjustLabelSpan="true"
+                        emptySpanXL="2"
+                        emptySpanL="2"
+                        emptySpanM="2"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false" />
+       </f:layout>
+       <f:formContainers>
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="Status">
+                     <f:fields>
+                                   <Text text="In-Transit"  />
+                     </f:fields>
+              </f:FormElement>
+              <f:FormElement label="Agent">
+	                 <f:fields>
+	                               <Text text="Rohit Agent" />
+	                 </f:fields>
+              </f:FormElement>
+                          
+            </f:formElements>
+          </f:FormContainer>
+       </f:formContainers>
+     </f:Form> 
+	</semantic:headerContent>
+	<semantic:content>
+
+ 
+
+	
+<List id="list" width="auto" class="sapFDynamicPageAlignContent"
+			items="{dataModel>/orders}"
+			busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}" growing="true" growingScrollToLoad="true"
+			updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
+			<infoToolbar>
+				<Toolbar active="true" id="filterBar" visible="{masterView>/isFilterBarVisible}" press="onOpenViewSettings" busyIndicatorSize="Large"
+					height="60px">
+					<Title id="filterBarLabel" text="Order ID"/>
+				</Toolbar>
+			</infoToolbar>
+			<headerToolbar>
+				<OverflowToolbar busyIndicatorSize="Small" height="0.2px">
+				</OverflowToolbar>
+			</headerToolbar>
+			<items>
+				<ObjectListItem title="{dataModel>Order_Id}"/>
+			</items>
+		</List> 
+	</semantic:content>
+	<!--Semantic ShareMenu Buttons-->
+	<semantic:sendEmailAction>
+		<semantic:SendEmailAction id="shareEmail" press="onSendEmailPress"/>
+	</semantic:sendEmailAction>
+	<semantic:closeAction>
+		<semantic:CloseAction id="closeColumn" press="onCloseDetailPress"/>
+	</semantic:closeAction>
+	<semantic:fullScreenAction>
+		<semantic:FullScreenAction id="enterFullScreen"
+			visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+	</semantic:fullScreenAction>
+	<semantic:exitFullScreenAction>
+		<semantic:ExitFullScreenAction id="exitFullScreen"
+			visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+	</semantic:exitFullScreenAction>
+</semantic:SemanticPage>
+</mvc:View>

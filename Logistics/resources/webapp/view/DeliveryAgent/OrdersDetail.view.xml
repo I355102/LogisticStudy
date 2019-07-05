@@ -1,0 +1,93 @@
+<mvc:View xmlns="sap.m" 
+xmlns:mvc="sap.ui.core.mvc" 
+xmlns:semantic="sap.f.semantic" 
+xmlns:footerbar="sap.ushell.ui.footerbar"
+controllerName="CaseStudy.Logistics.controller.DeliveryAgent.OrdersDetail" 	
+xmlns:f="sap.ui.layout.form"	
+xmlns:l="sap.ui.layout"	
+xmlns:core="sap.ui.core">
+	<semantic:SemanticPage id="detailPage" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+		<semantic:titleHeading>
+			<Title text="Customer Details"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<!--<ObjectAttribute title="{i18n>priceTitle}"/>
+			<ObjectNumber id="objectHeaderNumber" number="{      path: 'Price',      formatter: '.formatter.currencyValue'     }" numberUnit="{CurrencyCode}"/>
+		-->
+			<HBox>
+				<Button text="Call" activeIcon="sap-icon://call" icon="sap-icon://call" class="sapUiSmallMarginEnd"/>
+				<Button id="Navigate" text="Navigate" activeIcon="sap-icon://map" icon="sap-icon://map" class="sapUiSmallMarginEnd"/>
+				<Button id="Status" press="onStatusChange" activeIcon="sap-icon://shipping-status" text="Report as Delivered" icon="sap-icon://shipping-status" class="sapUiSmallMarginEnd"/>
+			</HBox>
+			<HBox id="map_canvas" fitContainer="true" justifyContent="Center" alignItems="Center" width="100%" height="300px" />
+
+		</semantic:headerContent>
+		<semantic:content>
+				<f:Form id="FormDisplay354"
+			editable="false">
+			<f:title>
+				<core:Title text="OrderDetails" />
+			</f:title>
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="3"
+					labelSpanL="3"
+					labelSpanM="3"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="4"
+					emptySpanL="4"
+					emptySpanM="4"
+					emptySpanS="0"
+					columnsXL="1"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement  label="Order Id">
+							<f:fields>
+								<Text id = "o_id" text="{dataModel>/Order_Id}"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Name">
+							<f:fields>
+								<Text text="{dataModel>/Customer_Name}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement  label="Addresss">
+							<f:fields>
+								<Text id = "addressfield" text="{dataModel>/Customer_Address}" />
+							</f:fields>
+						</f:FormElement>
+						
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		</semantic:content>
+		<!--Semantic ShareMenu Buttons
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onSendEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>-->
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{detailView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+		<semantic:closeAction>
+			<semantic:CloseAction id="closeColumn" press="onCloseDetailPress"/>
+		</semantic:closeAction>
+		<semantic:fullScreenAction>
+			<semantic:FullScreenAction id="enterFullScreen"
+				visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+		</semantic:fullScreenAction>
+		<semantic:exitFullScreenAction>
+			<semantic:ExitFullScreenAction id="exitFullScreen"
+				visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+		</semantic:exitFullScreenAction>
+	</semantic:SemanticPage>
+</mvc:View>

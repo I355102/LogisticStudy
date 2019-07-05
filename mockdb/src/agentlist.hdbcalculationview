@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="mock.mockdb::agentlist" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="agentlist"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="mock.mockdb::mock_clc_delivery_agent">
+    <resourceUri>mock.mockdb::mock_clc_delivery_agent</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="F_Delivery_Id">
+        <descriptions defaultDescription="F_Delivery_Id"/>
+      </viewAttribute>
+      <viewAttribute id="name">
+        <descriptions defaultDescription="name"/>
+      </viewAttribute>
+      <viewAttribute id="F_Region_Id">
+        <descriptions defaultDescription="F_Region_Id"/>
+      </viewAttribute>
+      <viewAttribute id="flagval">
+        <descriptions defaultDescription="flagval"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="mock.mockdb::mock_clc_delivery_agent">
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Delivery_Id" source="F_Delivery_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="name" source="name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="F_Region_Id" source="F_Region_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="flagval" source="flagval"/>
+    </input>
+    <filter>&quot;flagval&quot;='N'</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="F_Delivery_Id" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="F_Delivery_Id"/>
+      <keyMapping columnObjectName="Projection_1" columnName="F_Delivery_Id"/>
+    </attribute>
+    <attribute id="name" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="name"/>
+      <keyMapping columnObjectName="Projection_1" columnName="name"/>
+    </attribute>
+    <attribute id="F_Region_Id" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="F_Region_Id"/>
+      <keyMapping columnObjectName="Projection_1" columnName="F_Region_Id"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="80" y="205"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

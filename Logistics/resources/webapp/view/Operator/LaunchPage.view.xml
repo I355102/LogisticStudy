@@ -1,0 +1,42 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml"
+xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" 
+controllerName="CaseStudy.Logistics.controller.Operator.LaunchPage" 
+displayBlock="true">
+	<App id="idAppControl">
+		<pages>
+			<Page title="Operator"
+			showNavButton="true"
+		navButtonPress="onNavBack">
+				
+				<content>
+					
+					<!-- Personal Info Tile -->
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Personal Info" 
+					subheader="Update your personal info" press="onPersonalInfoPress">
+					<TileContent>
+						<ImageContent src="sap-icon://employee-pane"/>
+					</TileContent>
+					</GenericTile>
+					
+					<!-- Mapping Tile -->
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Assign Agents"
+					subheader="Map packets to agents" press="onMapPress">
+					<TileContent>
+						<ImageContent src="sap-icon://activity-assigned-to-goal" />
+					</TileContent>
+					</GenericTile>
+					
+					<!-- View Info Tile -->
+					<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="View Packets"
+					subheader="View Packets " press="onDisplayAssigned">
+					<TileContent>
+						<ImageContent src="sap-icon://product"/>
+					</TileContent>
+					</GenericTile>
+					
+					
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

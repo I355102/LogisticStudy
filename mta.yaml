@@ -1,0 +1,34 @@
+ID: mock
+_schema-version: '2.0'
+version: 0.0.1
+modules:
+  - name: mockdb
+    type: hdb
+    path: mockdb
+    requires:
+      - name: hdi_mockdb
+  - name: mockjs
+    type: nodejs
+    path: mockjs
+    provides:
+      - name: mockjs_api
+        properties:
+          service_url: '${default-url}'
+    requires:
+      - name: mockdb
+      - name: hdi_mockdb
+      
+  - name: Logistics
+    type: html5
+    path: Logistics
+    requires:
+      - name: mockjs_api
+        group: destinations
+        properties:
+          name: mockjs_be
+          url: '~{service_url}'
+resources:
+  - name: hdi_mockdb
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container

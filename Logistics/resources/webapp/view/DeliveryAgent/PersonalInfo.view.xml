@@ -1,0 +1,51 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	controllerName="CaseStudy.Logistics.controller.DeliveryAgent.PersonalInfo">
+	<Page title="My Details"
+			showNavButton="true"
+		navButtonPress="onNavBack">
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormDisplay480_Trial"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Address"
+			labelSpanXL="4"
+			labelSpanL="4"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="0"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="3"
+			columnsL="2"
+			columnsM="2"
+			singleContainerFullSize="false" >
+			<f:content>
+				
+				<core:Title text="My Details" />
+				<Label text="Name" />
+				<Text text="{Personalinfo>/Salutation} {Personalinfo>/First_Name} {Personalinfo>/LastName}" />
+				<Label text="Address" />
+				<Text text="{Personalinfo>/Address}" />
+				<Label text="Birth date" />
+				<Text text="{Personalinfo>/BirthDate}" />
+				
+				<core:Title text="Office" />
+				<Label text="E-mail ID" />
+				<Text text="{Personalinfo>/EmailID}" />
+				<Label text="Contact Details" />
+				<Text text="{Personalinfo>/Phone_Number}" />
+				<Label text="Designation" />
+				<Text text="{Personalinfo>/Role}" />
+				
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+	</Page>
+</mvc:View>
